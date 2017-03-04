@@ -17,5 +17,12 @@ Feature: Add product to the shopping cart
 
   Scenario: Add a product on the Today’s Deals page to the shopping cart
     Given user is on the Today’s Deals page
-    When user adds the product to cart
+    When user selects “Add to Cart”
     Then the corresponding product is added to the shopping cart
+
+  Scenario: Select a product which has only one left in stock
+    Given user has already selected the same product
+    Given user is on the same product’s description page
+    When user select the corresponding product characteristics
+    And user adds the product to cart
+    Then the product is not added to the shopping cart
